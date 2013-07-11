@@ -6,6 +6,5 @@ C:\Users\Michael\Downloads\dotnet-client-1.0-Src (1)\DotNetCasClient\obj\Debug\D
 C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Debug\DotNetCasClient.xml
 C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Debug\DotNetCasClient.dll
 C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Debug\DotNetCasClient.pdb
-C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\obj\Debug\DotNetCasClient.csprojResolveAssemblyReference.cache
 C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\obj\Debug\DotNetCasClient.dll
 C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\obj\Debug\DotNetCasClient.pdb
