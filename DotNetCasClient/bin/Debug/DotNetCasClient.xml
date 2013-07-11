@@ -221,6 +221,17 @@
             authenticated.  Otherwise, the current request is effectively anonymous.
             </summary>
         </member>
+        <member name="M:DotNetCasClient.CasAuthentication.setCasIISHeader(System.String)">
+            <summary>
+            Prior to understanding how to apply to modules that are not
+            managed by an ASP.NET handler (such as a .dll) I experimented
+            with adding to the read-only IIS request header. The method
+            remains here just in case.  However, it seems fairly unlikely
+            that this will necessary since the client populates a number
+            of headers with the user id. - mspalti 7/11/2013
+            </summary>
+            <param name="id">The user id.</param>
+        </member>
         <member name="M:DotNetCasClient.CasAuthentication.SetGatewayStatusCookie(DotNetCasClient.GatewayStatus)">
             <summary>
             Attempts to set the GatewayStatus client cookie.  If the cookie is not

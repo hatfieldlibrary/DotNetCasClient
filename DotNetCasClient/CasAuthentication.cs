@@ -763,7 +763,8 @@ namespace DotNetCasClient
                 FormsAuthenticationTicket formsAuthTicket = CreateFormsAuthenticationTicket(principal.Identity.Name, FormsAuthentication.FormsCookiePath, ticket, null, null);
                 SetAuthCookie(formsAuthTicket);
 
-                setCasIISHeader(principal.Assertion.PrincipalName);
+                // not used -mspalti 7/11/2013
+                //setCasIISHeader(principal.Assertion.PrincipalName);
 
                 // Also save the ticket in the server store (if configured)
                 if (ServiceTicketManager != null)
@@ -836,8 +837,9 @@ namespace DotNetCasClient
                             }
 
                             principal = new CasPrincipal(assertion);
-                                         
-                            setCasIISHeader(principal.Assertion.PrincipalName);
+
+                            // not used -mspalti 7/11/2013             
+                            //setCasIISHeader(principal.Assertion.PrincipalName);
                          
                         }
                     }
@@ -857,7 +859,8 @@ namespace DotNetCasClient
                 {
                     principal = new CasPrincipal(new Assertion(formsAuthenticationTicket.Name));
 
-                    setCasIISHeader(principal.Assertion.PrincipalName);
+                   // not used -mspalti 7/11/2013
+                   // setCasIISHeader(principal.Assertion.PrincipalName);
 
                    
                 }
@@ -891,7 +894,12 @@ namespace DotNetCasClient
         }
 
         /// <summary>
-        /// Set additional request header for Illiad.  -m. spalti
+        /// Prior to understanding how to apply this filter to modules that 
+        /// are not managed by an ASP.NET handler (such as a .dll), I experimented
+        /// with adding to the read-only IIS request header. The method
+        /// remains here just in case it's ever useful.  However, since the client 
+        /// populates a number of headers with the user id, it's fairly unlikely
+        /// that this will ever be needed. - mspalti 7/11/2013
         /// </summary>
         /// <param name="id">The user id.</param>
         internal static void setCasIISHeader(String id)
@@ -906,7 +914,6 @@ namespace DotNetCasClient
             PropertyInfo prop = hdr.GetProperty("IsReadOnly", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.IgnoreCase | BindingFlags.FlattenHierarchy);
             prop.SetValue(context.Request.Headers, false, null);
             hdr.InvokeMember("InvalidateCachedArrays", BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Instance, null, context.Request.Headers, null);
-
             hdr.InvokeMember("BaseAdd", BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Instance, null, headers, new object[] { "CASUser", new ArrayList { id } });
             request.Headers["CASUser"] = id;
             prop.SetValue(appHeaders, true, null);
