@@ -1,0 +1,5 @@
+C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Release\DotNetCasClient.xml
+C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Release\DotNetCasClient.dll
+C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\bin\Release\DotNetCasClient.pdb
+C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\obj\Release\DotNetCasClient.dll
+C:\Users\Michael\git\dotnet-client-1.0-Src\DotNetCasClient\obj\Release\DotNetCasClient.pdb

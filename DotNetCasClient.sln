@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCasClient", "DotNetCasClient\DotNetCasClient.csproj", "{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8CE89EF1-2586-4602-AC30-51753D393390}"
@@ -52,8 +52,8 @@ Global
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|x86.Build.0 = Debug|Any CPU
+		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|x86.ActiveCfg = Release|Any CPU
+		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Debug|x86.Build.0 = Release|Any CPU
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Release|.NET.ActiveCfg = Release|Any CPU
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{883A296E-C898-4D1F-9ED9-DE7569DEFB3D}.Release|Any CPU.Build.0 = Release|Any CPU
