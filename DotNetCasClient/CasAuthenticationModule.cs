@@ -45,7 +45,9 @@ namespace DotNetCasClient
             // Register our event handlers.  These are fired on every HttpRequest.
             context.BeginRequest += OnBeginRequest;
             context.AuthenticateRequest += OnAuthenticateRequest;
+            context.PreRequestHandlerExecute += OnIlliadRequestExecute;
             context.EndRequest += OnEndRequest;
+
         }
 
         /// <summary>
@@ -53,6 +55,23 @@ namespace DotNetCasClient
         /// </summary>
         public void Dispose()
         {
+        }
+
+        /// <summary>
+        /// New method inserts post body into memory so that this data will be
+        /// available to the Illiad handler. (This same issue exists for any
+        /// applicatin running under a native module (e.g. IsapiModule) that uses
+        /// the DotNetCasClient managed module. --mspalti
+        /// </summary>
+        private static void OnIlliadRequestExecute(object sender, EventArgs e)
+        {
+            HttpContext context = HttpContext.Current;
+            HttpRequest request = context.Request;
+
+            if (request.HttpMethod == "POST")
+            {
+                request.InsertEntityBody();
+            }        
         }
 
         /// <summary>

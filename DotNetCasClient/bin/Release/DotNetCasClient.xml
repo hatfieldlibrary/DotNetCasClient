@@ -495,6 +495,14 @@
             Performs cleanup when an instance of this HttpModule is being destroyed.
             </summary>
         </member>
+        <member name="M:DotNetCasClient.CasAuthenticationModule.OnIlliadRequestExecute(System.Object,System.EventArgs)">
+            <summary>
+            New method inserts post body into memory so that this data will be
+            available to the Illiad handler. (This same issue exists for any
+            applicatin running under a native module (e.g. IsapiModule) that uses
+            the DotNetCasClient managed module. --mspalti
+            </summary>
+        </member>
         <member name="M:DotNetCasClient.CasAuthenticationModule.OnBeginRequest(System.Object,System.EventArgs)">
             <summary>
             Intercepts the beginning of the request pipeline.  This will detect SingleSignOut 

@@ -656,7 +656,7 @@ namespace DotNetCasClient
                     response.ContentType = "text/plain";
                     response.Clear();
                     response.Write("OK");
-
+                   
                     context.ApplicationInstance.CompleteRequest();
                 }
             }
@@ -683,8 +683,10 @@ namespace DotNetCasClient
             HttpRequest request = context.Request;
             HttpResponse response = context.Response;
 
-            string proxyGrantingTicketIou = request.Params[PARAM_PROXY_GRANTING_TICKET_IOU];
-            string proxyGrantingTicket = request.Params[PARAM_PROXY_GRANTING_TICKET];
+           string proxyGrantingTicketIou = request.Params[PARAM_PROXY_GRANTING_TICKET_IOU];
+           string proxyGrantingTicket = request.Params[PARAM_PROXY_GRANTING_TICKET];
+           
+
             if (String.IsNullOrEmpty(proxyGrantingTicket))
             {
                 protoLogger.Info("Invalid request - {0} parameter not found", PARAM_PROXY_GRANTING_TICKET);
@@ -764,7 +766,7 @@ namespace DotNetCasClient
                 SetAuthCookie(formsAuthTicket);
 
                 // not used -mspalti 7/11/2013
-                //setCasIISHeader(principal.Assertion.PrincipalName);
+               // setCasIISHeader(principal.Assertion.PrincipalName);
 
                 // Also save the ticket in the server store (if configured)
                 if (ServiceTicketManager != null)
@@ -839,7 +841,7 @@ namespace DotNetCasClient
                             principal = new CasPrincipal(assertion);
 
                             // not used -mspalti 7/11/2013             
-                            //setCasIISHeader(principal.Assertion.PrincipalName);
+                           // setCasIISHeader(principal.Assertion.PrincipalName);
                          
                         }
                     }
@@ -860,7 +862,7 @@ namespace DotNetCasClient
                     principal = new CasPrincipal(new Assertion(formsAuthenticationTicket.Name));
 
                    // not used -mspalti 7/11/2013
-                   // setCasIISHeader(principal.Assertion.PrincipalName);
+                    //setCasIISHeader(principal.Assertion.PrincipalName);
 
                    
                 }
