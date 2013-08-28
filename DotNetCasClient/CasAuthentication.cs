@@ -765,8 +765,6 @@ namespace DotNetCasClient
                 FormsAuthenticationTicket formsAuthTicket = CreateFormsAuthenticationTicket(principal.Identity.Name, FormsAuthentication.FormsCookiePath, ticket, null, null);
                 SetAuthCookie(formsAuthTicket);
 
-                // not used -mspalti 7/11/2013
-               // setCasIISHeader(principal.Assertion.PrincipalName);
 
                 // Also save the ticket in the server store (if configured)
                 if (ServiceTicketManager != null)
@@ -840,9 +838,6 @@ namespace DotNetCasClient
 
                             principal = new CasPrincipal(assertion);
 
-                            // not used -mspalti 7/11/2013             
-                           // setCasIISHeader(principal.Assertion.PrincipalName);
-                         
                         }
                     }
                     else
@@ -860,11 +855,7 @@ namespace DotNetCasClient
                 else
                 {
                     principal = new CasPrincipal(new Assertion(formsAuthenticationTicket.Name));
-
-                   // not used -mspalti 7/11/2013
-                    //setCasIISHeader(principal.Assertion.PrincipalName);
-
-                   
+             
                 }
 
                 context.User = principal;
@@ -897,12 +888,11 @@ namespace DotNetCasClient
 
         /// <summary>
         /// Prior to understanding how to apply this filter to modules that 
-        /// are not managed by an ASP.NET handler (such as a .dll), I experimented
+        /// are not managed by a managed handler I experimented
         /// with adding to the read-only IIS request header. The method
-        /// remains here just in case it's ever useful.  However, since the client 
-        /// populates a number of headers with the user id, it's fairly unlikely
-        /// that this will ever be needed. - mspalti 7/11/2013
+        /// remains here just in case it's ever useful.  
         /// </summary>
+        /// <author>Michael Spalti</author>
         /// <param name="id">The user id.</param>
         internal static void setCasIISHeader(String id)
         {

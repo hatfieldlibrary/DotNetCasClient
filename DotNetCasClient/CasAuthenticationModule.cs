@@ -62,15 +62,15 @@ namespace DotNetCasClient
         /// post body into IIS memory so that the data will be
         /// available to a native handler. This allows us to
         /// use the CAS module with native applications like
-        /// Illiad.  
+        /// Illiad. Requires ASP.NET Framework 4 or higher.
         /// 
         /// This has not been written with file uploads
         /// in mind, so further code review is advised if this is 
         /// your goal.  Also consider adding maxAllowedContentLength 
         /// limit to your web.config.
         /// 
-        /// --mspalti
         /// </summary>
+        /// <author>Michael Spalti</author>
         private static void OnPostRequest(object sender, EventArgs e)
         {
             HttpContext context = HttpContext.Current;
