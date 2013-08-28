@@ -495,12 +495,20 @@
             Performs cleanup when an instance of this HttpModule is being destroyed.
             </summary>
         </member>
-        <member name="M:DotNetCasClient.CasAuthenticationModule.OnIlliadRequestExecute(System.Object,System.EventArgs)">
+        <member name="M:DotNetCasClient.CasAuthenticationModule.OnPostRequest(System.Object,System.EventArgs)">
             <summary>
-            New method inserts post body into memory so that this data will be
-            available to the Illiad handler. (This same issue exists for any
-            applicatin running under a native module (e.g. IsapiModule) that uses
-            the DotNetCasClient managed module. --mspalti
+            Handles PreRequestHandlerExecute event. Inserts 
+            post body into IIS memory so that the data will be
+            available to a native handler. This allows us to
+            use the CAS module with native applications like
+            Illiad.  
+            
+            This has not been written with file uploads
+            in mind, so further code review is advised if this is 
+            your goal.  Also consider adding maxAllowedContentLength 
+            limit to your web.config.
+            
+            --mspalti
             </summary>
         </member>
         <member name="M:DotNetCasClient.CasAuthenticationModule.OnBeginRequest(System.Object,System.EventArgs)">

@@ -495,6 +495,22 @@
             Performs cleanup when an instance of this HttpModule is being destroyed.
             </summary>
         </member>
+        <member name="M:DotNetCasClient.CasAuthenticationModule.OnPostRequest(System.Object,System.EventArgs)">
+            <summary>
+            Handles PreRequestHandlerExecute event. Inserts 
+            post body into IIS memory so that the data will be
+            available to a native handler. This allows us to
+            use the CAS module with native applications like
+            Illiad.  
+            
+            This has not been written with file uploads
+            in mind, so further code review is advised if this is 
+            your goal.  Also consider adding maxAllowedContentLength 
+            limit to your web.config.
+            
+            --mspalti
+            </summary>
+        </member>
         <member name="M:DotNetCasClient.CasAuthenticationModule.OnBeginRequest(System.Object,System.EventArgs)">
             <summary>
             Intercepts the beginning of the request pipeline.  This will detect SingleSignOut 

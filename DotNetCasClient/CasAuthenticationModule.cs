@@ -45,7 +45,7 @@ namespace DotNetCasClient
             // Register our event handlers.  These are fired on every HttpRequest.
             context.BeginRequest += OnBeginRequest;
             context.AuthenticateRequest += OnAuthenticateRequest;
-            context.PreRequestHandlerExecute += OnIlliadRequestExecute;
+            context.PreRequestHandlerExecute += OnPostRequest;
             context.EndRequest += OnEndRequest;
 
         }
@@ -58,12 +58,20 @@ namespace DotNetCasClient
         }
 
         /// <summary>
-        /// New method inserts post body into memory so that this data will be
-        /// available to the Illiad handler. (This same issue exists for any
-        /// applicatin running under a native module (e.g. IsapiModule) that uses
-        /// the DotNetCasClient managed module. --mspalti
+        /// Handles PreRequestHandlerExecute event. Inserts 
+        /// post body into IIS memory so that the data will be
+        /// available to a native handler. This allows us to
+        /// use the CAS module with native applications like
+        /// Illiad.  
+        /// 
+        /// This has not been written with file uploads
+        /// in mind, so further code review is advised if this is 
+        /// your goal.  Also consider adding maxAllowedContentLength 
+        /// limit to your web.config.
+        /// 
+        /// --mspalti
         /// </summary>
-        private static void OnIlliadRequestExecute(object sender, EventArgs e)
+        private static void OnPostRequest(object sender, EventArgs e)
         {
             HttpContext context = HttpContext.Current;
             HttpRequest request = context.Request;
