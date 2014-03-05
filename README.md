@@ -3,7 +3,8 @@ DotNetCasClient
 
 JASIG DotNetCasClient modified for use with native applications.  
 
-The event handler method makes POST data available to native applications by inserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. In the case of Illiad, this step is needed for openUrl requests.   
+The event handler method makes POST data available to native applications by inserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. In the case of Illiad interlibrary loan software, this step is needed for openUrl requests.  
+
 The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4.  The compiled DotNetCaseClient.dll can be found in DotNetCas/bin/Release.
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
