@@ -60,16 +60,17 @@ namespace DotNetCasClient
         /// <summary>
         /// Handles PreRequestHandlerExecute event. Inserts 
         /// post body into IIS memory so that the data will be
-        /// available to a native handler. This allows us to
+        /// available to native handlers. This allows us to
         /// use the CAS module with native applications like
         /// Illiad. Requires ASP.NET Framework 4 or higher.
         /// 
-        /// This has not been written with file uploads
-        /// in mind, so further code review is advised if this is 
-        /// your goal.  Also consider adding maxAllowedContentLength 
+        /// This is not written with large file uploads
+        /// in mind. Consider adding maxAllowedContentLength 
         /// limit to your web.config.
         /// 
         /// </summary>
+        /// <param name="sender">The HttpApplication that sent the request</param>
+        /// <param name="e">Not used</param>
         /// <author>Michael Spalti</author>
         private static void OnPostRequest(object sender, EventArgs e)
         {
@@ -78,6 +79,7 @@ namespace DotNetCasClient
 
             if (request.HttpMethod == "POST")
             {
+                logger.Debug("Adding post body to IIS memory.");
                 request.InsertEntityBody();
             }        
         }
@@ -93,8 +95,7 @@ namespace DotNetCasClient
         /// circuiting all event processing and firing EndRequest directly 
         /// (via CompleteRequest()).
         /// </summary>
-        /// <param name="sender">The HttpApplication that sent the request</param>
-        /// <param name="e">Not used</param>
+        ///
         private static void OnBeginRequest(object sender, EventArgs e)
         {
             CasAuthentication.Initialize();

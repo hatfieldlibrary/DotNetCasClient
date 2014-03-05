@@ -886,30 +886,6 @@ namespace DotNetCasClient
             }
         }
 
-        /// <summary>
-        /// Prior to understanding how to apply this filter to modules that 
-        /// are not managed by a managed handler I experimented
-        /// with adding to the read-only IIS request header. The method
-        /// remains here just in case it's ever useful.  
-        /// </summary>
-        /// <author>Michael Spalti</author>
-        /// <param name="id">The user id.</param>
-        internal static void setCasIISHeader(String id)
-        {
-            HttpContext context = HttpContext.Current;
-            HttpRequest request = context.Request;
-            HttpApplication app = context.ApplicationInstance;
-            NameValueCollection headers = request.Headers;
-            NameValueCollection appHeaders = app.Context.Request.Headers;
-
-            Type hdr = context.Request.Headers.GetType();
-            PropertyInfo prop = hdr.GetProperty("IsReadOnly", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.IgnoreCase | BindingFlags.FlattenHierarchy);
-            prop.SetValue(context.Request.Headers, false, null);
-            hdr.InvokeMember("InvalidateCachedArrays", BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Instance, null, context.Request.Headers, null);
-            hdr.InvokeMember("BaseAdd", BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Instance, null, headers, new object[] { "CASUser", new ArrayList { id } });
-            request.Headers["CASUser"] = id;
-            prop.SetValue(appHeaders, true, null);
-        }
 
         /// <summary>
         /// Attempts to set the GatewayStatus client cookie.  If the cookie is not

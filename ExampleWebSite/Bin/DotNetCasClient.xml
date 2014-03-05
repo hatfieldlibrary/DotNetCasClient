@@ -221,16 +221,6 @@
             authenticated.  Otherwise, the current request is effectively anonymous.
             </summary>
         </member>
-        <member name="M:DotNetCasClient.CasAuthentication.setCasIISHeader(System.String)">
-            <summary>
-            Prior to understanding how to apply this filter to modules that 
-            are not managed by a managed handler I experimented
-            with adding to the read-only IIS request header. The method
-            remains here just in case it's ever useful.  
-            </summary>
-            <author>Michael Spalti</author>
-            <param name="id">The user id.</param>
-        </member>
         <member name="M:DotNetCasClient.CasAuthentication.SetGatewayStatusCookie(DotNetCasClient.GatewayStatus)">
             <summary>
             Attempts to set the GatewayStatus client cookie.  If the cookie is not
@@ -498,13 +488,12 @@
             <summary>
             Handles PreRequestHandlerExecute event. Inserts 
             post body into IIS memory so that the data will be
-            available to a native handler. This allows us to
+            available to native handlers. This allows us to
             use the CAS module with native applications like
             Illiad. Requires ASP.NET Framework 4 or higher.
             
-            This has not been written with file uploads
-            in mind, so further code review is advised if this is 
-            your goal.  Also consider adding maxAllowedContentLength 
+            This is not written with large file uploads
+            in mind. Consider adding maxAllowedContentLength 
             limit to your web.config.
             
             </summary>
