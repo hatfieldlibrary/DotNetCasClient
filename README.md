@@ -7,12 +7,19 @@ Added a handler for the PreRequestHandlerExectue event.  The handler method inse
 making post data available to native applications (e.g. Illiad.dll). This uses a wrapper method introduced with ASP.NET Framework 4.
 
 <code>private static void OnPostRequest(object sender, EventArgs e) {
+
             HttpContext context = HttpContext.Current;
+            
             HttpRequest request = context.Request;
+            
             if (request.HttpMethod == "POST")
+            
             {
+            
                 request.InsertEntityBody();
+                
             }        
+            
         }</code>
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
