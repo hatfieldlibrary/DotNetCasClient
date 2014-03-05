@@ -3,24 +3,9 @@ DotNetCasClient
 
 JASIG DotNetCasClient modified for use with native applications.
 
-Added a handler for the PreRequestHandlerExectue event.  The handler method inserts the POST body back into IIS memory, 
-making post data available to native applications (e.g. Illiad.dll). This uses a wrapper method introduced with ASP.NET Framework 4.
+Adds a handler for the integrated pipeline PreRequestHandlerExectue event.  The handler method inserts the POST body back into IIS memory, making post data available to native applications (e.g. Illiad.dll). In the case of Illiad, this step is needed for openUrl requests.  The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4.
 
-<code>
-       private static void OnPostRequest(object sender, EventArgs e) {
-
-            HttpContext context = HttpContext.Current;
-            
-            HttpRequest request = context.Request;
-            
-            if (request.HttpMethod == "POST")
-            
-            {
-                request.InsertEntityBody();
-            }        
-            
-        }
-</code>
+The compiled dll is located here in DotNetCas/bin/Release.
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
 element of your web.config:
