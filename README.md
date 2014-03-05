@@ -3,7 +3,7 @@ DotNetCasClient
 
 JASIG DotNetCasClient modified for use with native applications.  
 
-The event handler method makes POST data available to native applications by inserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. In the case of Illiad interlibrary loan software, this step is needed for openUrl requests.  
+In the updated code, a new event handler method makes POST data available to native applications by inserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. In the case of Illiad interlibrary loan software, this step is needed for openUrl requests.  
 
 The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4.  
 
