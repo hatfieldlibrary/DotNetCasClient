@@ -12,7 +12,7 @@ The modified CasAuthenticationModule.cs uses a wrapper method introduced with AS
 The compiled DotNetCasClient.dll can be found in DotNetCas/bin/Release. There are several ways to deploy, but in the case of Illiad, the easiest way is to copy the DoNetCasClient.dll to the Illiad /Bin directory.
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
-element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasClient/blob/master/Configuration/web.config">sample web.conf file</a> for more details.
+element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasClient/blob/master/Configuration/web.config">sample web.conf file</a> for more details. It's probably best to work from this sample file, especially you are using the CAS client with Illiad.
 
 ```xml
 <system .webserver=""> 
