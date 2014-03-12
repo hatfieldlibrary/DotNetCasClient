@@ -28,3 +28,5 @@ element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasCl
 
 
 More JASIG client <a href="https://wiki.jasig.org/display/CASC/.Net+Cas+Client">configuration documentation here</a>.
+
+The project includes Visual Studio Professional 2012 configuration. Mileage will vary. 
