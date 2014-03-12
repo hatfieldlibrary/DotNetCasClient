@@ -12,18 +12,18 @@ The modified CasAuthenticationModule.cs uses a wrapper method introduced with AS
 The compiled DotNetCasClient.dll can be found in DotNetCas/bin/Release. 
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
-element of your web.config:
+element of your web.config.  For a complete sample web.conf file, see
 
 ```xml
 <system .webserver=""> 
-  <modules>
-    <remove name="FormsAuthenticationModule"/> 
-    <add name="FormsAuthenticationModule" type="System.Web.Security.FormsAuthenticationModule"/>
-   <remove name="UrlAuthorization"/> 
-   <add name="UrlAuthorization" type="System.Web.Security.UrlAuthorizationModule"/> 
-   <remove name="DefaultAuthentication"/>
-   <add name="DefaultAuthentication" type="System.Web.Security.DefaultAuthenticationModule"/>
-</modules>
+      <modules>
+		  <remove name="UrlAuthorization" />
+		  <add name="UrlAuthorization" type="System.Web.Security.UrlAuthorizationModule" />
+ 		  <remove name="FormsAuthenticationModule" />
+		  <add name="FormsAuthenticationModule" type="System.Web.Security.FormsAuthenticationModule" />
+		  <remove name="DotNetCasClient" />
+		  <add name="DotNetCasClient" type="DotNetCasClient.CasAuthenticationModule,DotNetCasClient" />		
+    </modules>
 ```
 
 
