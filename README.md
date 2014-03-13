@@ -5,11 +5,15 @@ JASIG DotNetCasClient modified for use with native applications.
 
 CAS authentication for Illiad interlibrary loan sofware was the motivating use case for this project.
 
+###Quick Description
+
 The JASIG .Net client CasAuthenicationModule is extended to provide a handler for the PreRequestHandlerExecute event. The new handler method makes POST data available to native applications by reinserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. 
 
 In the case of Illiad interlibrary loan software, this step is needed for OpenURL requests. Without it, the bibliographic information in the OpenURL request doesn't reach the Illiad application.  
 
 The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4.  Consequently, this code will not work with prior releases of ASP.NET Framework.  But could be modified to work without too much effort. 
+
+###How To Use
 
 The compiled DotNetCasClient.dll can be found in <a href="https://github.com/mspalti/DotNetCasClient/tree/master/DotNetCasClient/bin/Release">DotNetCas/bin/Release</a>. There are several ways to deploy, but in the case of Illiad, the easiest way is to copy the DoNetCasClient.dll to the Illiad /Bin directory.
 
@@ -31,4 +35,4 @@ element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasCl
 
 More JASIG client <a href="https://wiki.jasig.org/display/CASC/.Net+Cas+Client">configuration documentation here</a>.
 
-The project includes Visual Studio Professional 2012 configuration. Mileage will vary. 
+Source and Visual Studio configuration files included.   
