@@ -1,18 +1,20 @@
 DotNetCasClient
 ===============
 
-JASIG DotNetCasClient modified for use with native applications.  CAS authentication for Illiad interlibrary loan sofware was the motivating use case for this project.
+JASIG DotNetCasClient modified for use with native applications.  
 
-The JASIG .Net client CasAuthenicationModule has been extended with a new handler for the PreRequestHandlerExecute event. The new handler method makes POST data available to native applications by reinserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. 
+CAS authentication for Illiad interlibrary loan sofware was the motivating use case for this project.
+
+The JASIG .Net client CasAuthenicationModule is extended to provide a handler for the PreRequestHandlerExecute event. The new handler method makes POST data available to native applications by reinserting the POST body into IIS memory just prior to passing the request to the native IsapiModule. 
 
 In the case of Illiad interlibrary loan software, this step is needed for OpenURL requests. Without it, the bibliographic information in the OpenURL request does not reach the Illiad application.  
 
-The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4. This code will not work with prior releases of ASP.NET Framework, but could be modified to work without too much effort. 
+The modified CasAuthenticationModule.cs uses a wrapper method introduced with ASP.NET Framework 4.  So this code will not work with prior releases of ASP.NET Framework, but could be modified to work without too much effort. 
 
 The compiled DotNetCasClient.dll can be found in <a href="https://github.com/mspalti/DotNetCasClient/tree/master/DotNetCasClient/bin/Release">DotNetCas/bin/Release</a>. There are several ways to deploy, but in the case of Illiad, the easiest way is to copy the DoNetCasClient.dll to the Illiad /Bin directory.
 
 To use the JASIG client and .NET Forms Authentication with a native application, add the following to the web.server 
-element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasClient/blob/master/Configuration/web.config">sample web.conf file</a> for more details. It's probably best to work from this sample file, especially you are using the CAS client with Illiad.
+element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasClient/blob/master/Configuration/web.config">sample web.conf file</a> for more details. It's probably easiest to work from this sample file, especially you are using the CAS client with Illiad.
 
 ```xml
 <system .webserver=""> 
