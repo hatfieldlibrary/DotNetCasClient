@@ -21,7 +21,6 @@ To use the JASIG client and .NET Forms Authentication with a native application,
 element of your web.config.  See <a href="https://github.com/mspalti/DotNetCasClient/blob/master/Configuration/web.config">sample web.conf file</a> for more details. (It's probably easiest to work from this sample file, especially you are using the CAS client with Illiad.)
 
 ```xml
-<system .webserver=""> 
       <modules>
 		  <remove name="UrlAuthorization" />
 		  <add name="UrlAuthorization" type="System.Web.Security.UrlAuthorizationModule" />
